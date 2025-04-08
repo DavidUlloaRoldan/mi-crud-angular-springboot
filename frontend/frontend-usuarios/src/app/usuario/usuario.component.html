@@ -1,0 +1,49 @@
+<h2>{{ nuevoUsuario.id ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
+
+<form (ngSubmit)="guardarUsuario()" #form="ngForm">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="nuevoUsuario.nombre" name="nombre" required />
+  <br />
+
+  <label>Email:</label>
+  <input type="email" [(ngModel)]="nuevoUsuario.email" name="email" required />
+  <br />
+
+  <label>Edad:</label>
+  <input type="number" [(ngModel)]="nuevoUsuario.edad" name="edad" required />
+  <br />
+
+  <button type="submit">
+    {{ nuevoUsuario.id ? 'Actualizar' : 'Crear' }}
+  </button>
+  <button type="button" (click)="cancelarEdicion()" *ngIf="nuevoUsuario.id">
+    Cancelar
+  </button>
+</form>
+
+<hr />
+
+<h2>Lista de Usuarios</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Edad</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.email }}</td>
+      <td>{{ usuario.edad }}</td>
+      <td>
+        <button (click)="editarUsuario(usuario)">Editar</button>
+        <button (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

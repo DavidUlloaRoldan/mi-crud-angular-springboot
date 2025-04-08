@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Lista de Usuarios</h2>
+    <button class="btn btn-success" (click)="crearUsuario()">Agregar Usuario</button>
+  </div>
+
+  <div *ngIf="usuarios.length === 0" class="alert alert-warning text-center">
+    No hay usuarios disponibles.
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div *ngFor="let usuario of usuarios" class="col">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ usuario.nombre }}</h5>
+          <p class="card-text">
+            <strong>Email:</strong> {{ usuario.email }}<br>
+            <strong>Edad:</strong> {{ usuario.edad }}
+          </p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <button class="btn btn-primary btn-sm" (click)="editarUsuario(usuario)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
