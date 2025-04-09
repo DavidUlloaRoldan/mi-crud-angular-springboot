@@ -8,6 +8,6 @@ class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// Esta prueba asegura que el contexto de Spring se carga sin errores
 	}
-
 }
